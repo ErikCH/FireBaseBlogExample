@@ -1,0 +1,10 @@
+
+<div class = 'row'>
+	<div class='col-md-4'>
+		<h1>Posts</h1>
+			{{#each model as |post|}}
+			<br>{{#link-to 'posts' post.titleURL}}{{post.title}}{{/link-to}}
+			{{/each}}
+	</div>
+	
+</div>

@@ -1,0 +1,8 @@
+.border{
+	border-radius: 25px;
+	border: 2px solid black;
+	width: 560px;
+	height: 340px;
+	padding: 20px;
+	margin: 20px;
+}

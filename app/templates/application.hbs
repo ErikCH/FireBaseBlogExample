@@ -1,0 +1,23 @@
+<nav class="navbar navbar-inverse navbar-fixed-top">  
+        <div class="container-fluid">
+                <div class="navbar-header" href="#">
+						{{#link-to 'index' class='navbar-brand'}}My New Blog{{/link-to}}
+                </div>
+                <ul class="nav navbar-nav">
+					{{#if session.isAuthenticated}}
+                        <li>{{#link-to 'new'}}Add New Post{{/link-to}}</li>
+					{{/if}}
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+					{{#unless session.isAuthenticated}}
+                        <li><a href="#" {{action 'login' }}>Login</a></li>
+					{{else}}
+                        <li><a href="#" {{action 'logout' }}>Logout</a></li>
+					{{/unless}}
+                </ul>
+        </div>
+</nav> 
+<br>
+<br>
+<br>
+{{outlet}}
