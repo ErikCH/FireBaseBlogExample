@@ -1,16 +1,20 @@
 import Ember from 'ember';
+const {get} = Ember;
 
 export default Ember.Route.extend({
-	model: function(){
+	beforeModel(){
+		return get(this,'session').fetch().catch(function(){});
+	},
+	model(){
 		return this.store.findAll('post');
 	},
 	actions:{
-		login: function(){
-			this.get('session').open('firebase', { provider: 'twitter'}).then(function(data) {
+		login(){
+			get(this,'session').open('firebase', { provider: 'twitter'}).then(function(data) {
 			      });
 		},
-		logout: function(){
-			this.get('session').close();
+		logout(){
+			get(this,'session').close();
 		}	   
 	}
 });

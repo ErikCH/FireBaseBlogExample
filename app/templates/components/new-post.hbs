@@ -1,0 +1,16 @@
+<br><br>
+<div class='col-md-4 border' >  
+        <h1>New Post</h1>
+        <form {{action 'save' post on='submit'}}>
+        <dl>
+			<dt>Title:<br> {{textarea value=post.title cols="40" rows="1" placeholder='Title'}}</dt>
+			<dt>Body:<br> {{textarea value=post.body cols="40" rows="6" placeholder='Body'}}</dt>
+        </dl>
+        <button type='submit' class='btn btn-primary'>Add</button>
+        </form>
+</div>
+<div id='preview' class='col-md-4 border'  >  
+    <h1>Preview</h1>
+	<h3>{{post.title}}</h3>
+	<h4>{{markdown-to-html markdown=post.body}}</h4>
+</div>

@@ -1,0 +1,38 @@
+{{#link-to  'index'}} 
+&#8592; back
+{{/link-to}}
+{{#each model as |post|}}
+<div class='row'>
+	{{#if isEditing}}
+		<div class='col-md-4 border'>
+			<form {{action 'save' post on='submit'}}>
+				<dl>
+					<dt>Title:<br> {{textarea value=post.title cols='40' rows='1'}}</dt>
+					<dt>Body:<br> {{textarea value=post.body cols='40' rows='6'}}</dt>
+				</dl>
+				<div class = 'row'>
+					<button type='submit' class = 'btn btn-primary'>Done</button>
+				</div>
+			</form>	
+		</div>
+	{{/if}}
+	<div  class='col-md-4 border'>
+				<h1><img src='{{post.user.avatar}}'/>{{post.title}}</h1>
+				<h3>{{markdown-to-html markdown=post.body}}</h3>
+				<h4>-<a href='http://twitter.com/{{post.user.username}}' target='_blank'>{{post.user.username}}</a> </h4>
+				{{#if post.date}}
+				{{moment-from-now post.date}}
+				{{/if}}
+				
+			{{#if session.isAuthenticated}}
+			{{#if isAllowed}}
+				<form >
+				<button type='submit' class='btn btn-primary'{{action 'edit' }}>Edit</button>
+				<button type='delete' class= 'btn btn-primary' {{action 'delete' post}}>Delete</button>
+				</form>
+			{{/if}}
+			{{/if}}
+	</div>
+</div>
+{{add-comments post=post session=session store='createComment' }}
+{{/each}}

@@ -1,7 +1,7 @@
 <nav class="navbar navbar-inverse navbar-fixed-top">  
         <div class="container-fluid">
                 <div class="navbar-header" href="#">
-						{{#link-to 'index' class='navbar-brand'}}My New Blog{{/link-to}}
+						{{#link-to 'index' class='navbar-brand'}}Program With Erik Blog Example{{/link-to}}
                 </div>
                 <ul class="nav navbar-nav">
 					{{#if session.isAuthenticated}}
@@ -13,11 +13,13 @@
                         <li><a href="#" {{action 'login' }}>Login</a></li>
 					{{else}}
                         <li><a href="#" {{action 'logout' }}>Logout</a></li>
+				        <li>
+							<a href='http://twitter.com/{{session.currentUser.username}}' target='_blank'>
+								<img src='{{session.currentUser.profileImageURL}}' height='30px' width='30px'/>
+							</a>
+						</li>
 					{{/unless}}
                 </ul>
         </div>
 </nav> 
-<br>
-<br>
-<br>
 {{outlet}}

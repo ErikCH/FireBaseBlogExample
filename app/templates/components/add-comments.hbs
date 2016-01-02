@@ -1,0 +1,20 @@
+<h4>Comments:</h4>
+
+{{#unless post.comments}}
+	<h4> No Comments</h4>
+{{/unless}}
+	{{#each post.comments as |comment|}}
+<div class='comments'>
+	<img src='{{comment.user.avatar}}'/>
+	 	{{comment.body}}<br>
+	-<a href='http://twitter.com/{{comment.user.username}}' target='_blank'>{{comment.user.username}}</a><br>
+</div>
+	{{/each}}
+
+{{#if session.isAuthenticated}}
+<div class='box'>
+	<img src='{{session.currentUser.profileImageURL}}' height='70px' width='70px'/>
+	{{textarea  type='text' value=body placeholder='Add New Comment' rows='2'}}
+	<button {{action 'submitComment' session body}}>Submit</button>
+</div>
+{{/if}}
