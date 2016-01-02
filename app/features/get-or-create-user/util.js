@@ -1,4 +1,7 @@
-const {get} = Ember;
+import Ember from 'ember';
+
+const {RSVP: {Promise}} = Ember;
+
 export default function getOrCreateUser(uid,username,avatar,store) {
 
 	return new Promise((resolve)=>{

@@ -1,8 +1,8 @@
 import Ember from 'ember';
-import cleanURI from '../utils/clean';
-import getOrCreateUser from '../utils/get-or-create-user';
+import cleanURI from '../clean/util';
+import getOrCreateUser from '../get-or-create-user/util';
 
-const {get, set, RSVP: {Promise}} = Ember;
+const {get, set } = Ember;
 
 export default Ember.Route.extend({
 	actions: {

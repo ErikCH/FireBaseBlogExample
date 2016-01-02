@@ -5,7 +5,7 @@ export default Ember.Component.extend({
 	isEditing: false,
 	   classNames: 'edit',
 	   isAllowed: Ember.computed('model.firstObject.user.username','session.currentUser.username', function(){
-		return get(this,'model.firstObject.user.username') === get(this,'session.currentUser.username')
+		return get(this,'model.firstObject.user.username') === get(this,'session.currentUser.username');
 	   }),
 	   actions:{
 		   save(post){
