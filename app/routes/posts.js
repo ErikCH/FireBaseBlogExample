@@ -1,7 +1,7 @@
 import Ember from 'ember';
 import cleanURI from '../utils/clean';
 import getOrCreateUser from '../utils/get-or-create-user';
-const {get, set} = Ember;
+const {get} = Ember;
 
 export default Ember.Route.extend({
 	model(param) {
@@ -33,12 +33,34 @@ export default Ember.Route.extend({
 		   user.then((userData)=>{
 			   userData.get('comments').addObject(comment);
 			   post.get('comments').addObject(comment);
-			   comment.save().then(()=> {
-				   return post.save().then(()=>{ 
-					   return userData.save();
-				   });
-			   });
+			   console.log('test');
+			   return comment.save().then(()=>{
+										console.log('comment saved succesfully');
+										return post.save();
+									})
+									.catch((error)=>{
+										console.log(`comment:  ${error}`);
+										comment.rollbackAttributes();
+									})
+									.then(()=>{
+										console.log('post saved successfuly');
+										return userData.save();
+									})
+									.catch((error)=>{
+										console.log(`post:  ${error}`);
+										post.rollbackAttributes();
+								    })
+									.then(()=>{
+										console.log('user saved successfuly');
+									})
+									.catch((error)=>{
+										console.log(`user:  ${error}`);
+										user.rollbackAttributes();
+								    });
+
+
 		   });
+
 	   }
    }
 });
