@@ -3,8 +3,8 @@
         <h1>New Post</h1>
         <form {{action 'save' post on='submit'}}>
         <dl>
-			<dt>Title:<br> {{textarea value=post.title cols="40" rows="1" placeholder='Title'}}</dt>
-			<dt>Body:<br> {{textarea value=post.body cols="40" rows="6" placeholder='Body'}}</dt>
+			<dt>Title:<br> <textarea cols=40 rows='1' placeholder='Title' value= {{post.title}} oninput={{action (mut post.title) value='target.value'}} /></dt>
+			<dt>Body:<br> <textarea cols=40 rows='6' placeholder='Body'  value= {{post.body}} oninput={{action (mut post.body) value='target.value' }} /></dt>
         </dl>
         <button type='submit' class='btn btn-primary'>Add</button>
         </form>
