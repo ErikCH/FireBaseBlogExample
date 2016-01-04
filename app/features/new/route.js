@@ -24,7 +24,7 @@ export default Ember.Route.extend({
 								   this.store);
 			user.then((userData)=>{
 				userData.get('posts').addObject(post);
-				post.save().then(function() {
+				post.save().then(()=> {
 					return userData.save();
 				});
 

@@ -33,7 +33,6 @@ export default Ember.Route.extend({
 		   user.then((userData)=>{
 			   userData.get('comments').addObject(comment);
 			   post.get('comments').addObject(comment);
-			   console.log('test');
 			   return comment.save().then(()=>{
 										console.log('comment saved succesfully');
 										return post.save();

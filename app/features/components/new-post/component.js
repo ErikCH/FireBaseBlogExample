@@ -1,13 +1,13 @@
 import Ember from 'ember';
 
+const {set}= Ember;
 export default Ember.Component.extend({
-	post: {},
 	classNames: 'new',
 	actions:{
-		save(post){
-			this.sendAction('save',post.title, post.body);
-			Ember.set(this,'post.title','');
-			Ember.set(this,'post.body','');
+		save(title, body){
+			this.sendAction('save',title, body);
+			set(this,'title','');
+			set(this,'body','');
 
 		}
 	}

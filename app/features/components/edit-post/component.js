@@ -12,10 +12,6 @@ export default Ember.Component.extend({
 			   let sessionName = get(this,'session.currentUser.username');
 			   if(sessionName === post.get('user.username')){
 				   set(this, 'isEditing', false);
-				   this.setProperties({
-					   body: '',
-					   post: ''
-				   });
 				   this.sendAction('save',post);
 
 			   }
